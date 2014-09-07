@@ -13,8 +13,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require underscore
+//= require hamlcoffee
 //= require backbone
 //= require backbone_rails_sync
 //= require backbone_datalink
+//= require backbone.marionette
 //= require backbone/marionette_example
 //= require_tree .
