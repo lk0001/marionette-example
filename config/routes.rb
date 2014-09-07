@@ -9,6 +9,10 @@ Rails.application.routes.draw do
     resources :posts, only: %i[show index create update destroy]
   end
 
+  constraints format: 'html' do
+    get '*path', controller: 'homes', action: 'index'
+  end
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

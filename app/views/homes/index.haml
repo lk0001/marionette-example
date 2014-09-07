@@ -1,2 +1,9 @@
 #main-content
   This is how it looks like without javascript.
+
+:javascript
+  $(function(){
+    window.posts = #{@posts.to_json.html_safe}
+    window.theApp = new MarionetteExample.Application();
+    window.theApp.start();
+  });

@@ -1,0 +1,8 @@
+%form.js-post-form
+  %label Author
+  %input{name: 'author', type: 'text', value: @author}
+  %label Content
+  %input{name: 'content', type: 'text', value: @content}
+  %input{type: 'submit', value: 'Save post'}
+
+%a.nav-link{data-route: 'posts:index', href: '#'} Back

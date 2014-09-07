@@ -1,0 +1,8 @@
+%p
+  Author:
+  = @author
+%p
+  Content:
+  = @content
+
+%a.nav-link{data-route: 'posts:index', href: '#'} Back

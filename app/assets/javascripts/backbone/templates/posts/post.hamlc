@@ -1,0 +1,9 @@
+%span= @content
+|
+%span= @author
+|
+%a.nav-link{data-route: "posts:show/#{@id}", href: '#'} Show
+|
+%a.nav-link{data-route: "posts:edit/#{@id}", href: '#'} Edit
+|
+%a.js-destroy{href: '#'} Destroy
