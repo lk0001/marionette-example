@@ -1,5 +1,6 @@
 class MarionetteExample.Models.Post extends Backbone.Model
-  paramRoot: 'post'
+  urlRoot: '/api/posts'
+  # paramRoot: 'post'
 
   defaults:
     author: null
@@ -7,4 +8,4 @@ class MarionetteExample.Models.Post extends Backbone.Model
 
 class MarionetteExample.Collections.PostsCollection extends Backbone.Collection
   model: MarionetteExample.Models.Post
-  url: '/posts'
+  url: '/api/posts'

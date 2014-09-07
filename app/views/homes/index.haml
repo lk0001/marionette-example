@@ -1,2 +1,8 @@
-#main-content
+#posts
   This is how it looks like without javascript.
+
+:javascript
+  $(function() {
+    window.router = new MarionetteExample.Routers.PostsRouter({posts: #{@posts.to_json.html_safe}});
+    Backbone.history.start();
+  });
