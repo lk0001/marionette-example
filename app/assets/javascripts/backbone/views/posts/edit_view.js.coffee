@@ -14,6 +14,8 @@ class MarionetteExample.Views.Posts.EditView extends Backbone.View
       success: (post) =>
         @model = post
         window.location.hash = "/#{@model.id}"
+      error: =>
+        @model.set(@model.previousAttributes())
     )
 
   render: ->
