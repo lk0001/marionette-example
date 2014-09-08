@@ -9,12 +9,13 @@ class MarionetteExample.Views.PostForm extends Marionette.ItemView
 
   savePost: (e) =>
     e.preventDefault()
-    @model.save(null,
+    attrs = {author: @$('input[name=author]').val(), \
+             content: @$('input[name=content]').val()}
+    @model.save(attrs,
       success: (post) ->
         theApp.trigger('post:saved', post)
-      error: =>
-        @model.set(@model.previousAttributes())
+      wait: true
     )
 
-  onRender: =>
-    @$("form").backboneLink(@model)
+  # onRender: =>
+  #   @$("form").backboneLink(@model)
