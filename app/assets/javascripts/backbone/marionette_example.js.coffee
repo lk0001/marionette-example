@@ -20,11 +20,12 @@ class @MarionetteExample.Application extends Backbone.Marionette.Application
 
     @Router = Backbone.Marionette.AppRouter.extend
       appRoutes:
-        '(/)':            'start'
-        'posts':          'posts'
-        'post/:id':       'post'
-        'posts/new':      'newPost'
-        'posts/:id/edit': 'editPost'
+        '(/)':              'start'
+        'posts':            'posts'
+        'posts_composite':  'postsComposite'
+        'post/:id':         'post'
+        'posts/new':        'newPost'
+        'posts/:id/edit':   'editPost'
 
     @Controller = new MarionetteExample.Controller(@)
     @addInitializer =>
@@ -44,6 +45,7 @@ class @MarionetteExample.Application extends Backbone.Marionette.Application
     @listenTo @, 'route:posts:new', @Controller.newPost
     @listenTo @, 'route:posts:edit', @Controller.editPost
     @listenTo @, 'route:posts:index', @Controller.posts
+    @listenTo @, 'route:posts:index:composite', @Controller.postsComposite
     @listenTo @, 'route:posts:show', @Controller.post
     @listenTo @, 'post:saved', @handlePostAdded
     @listenTo @, 'post:destroyed', @handlePostDestroyed

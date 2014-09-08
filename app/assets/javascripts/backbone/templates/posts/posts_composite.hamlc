@@ -1,6 +1,6 @@
 %h1 Listing posts
 
-#posts
+%ul#posts
 
 %a.nav-link{data-route: 'posts:new', href: '#'} New post
 
