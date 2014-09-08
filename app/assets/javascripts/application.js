@@ -17,6 +17,7 @@
 //= require backbone
 //= require backbone_rails_sync
 //= require backbone_datalink
+//= require backbone.syphon
 //= require backbone.marionette
 //= require backbone/marionette_example
 //= require_tree .

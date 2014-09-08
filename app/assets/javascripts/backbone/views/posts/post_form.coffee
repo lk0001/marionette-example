@@ -9,13 +9,9 @@ class MarionetteExample.Views.PostForm extends Marionette.ItemView
 
   savePost: (e) =>
     e.preventDefault()
-    attrs = {author: @$('input[name=author]').val(), \
-             content: @$('input[name=content]').val()}
+    attrs = Backbone.Syphon.serialize(@)
     @model.save(attrs,
       success: (post) ->
         theApp.trigger('post:saved', post)
       wait: true
     )
-
-  # onRender: =>
-  #   @$("form").backboneLink(@model)
