@@ -12,5 +12,6 @@ class MarionetteExample.Collections.Posts extends Backbone.Collection
   url: '/api/posts'
 
   longestPost: =>
+    return if @isEmpty() # would return -Infinity
     @max (post) =>
       post.get('content').length

@@ -7,8 +7,15 @@ class MarionetteExample.Views.LongestPost extends Marionette.ItemView
     'remove': 'recalculatePost'
 
   initialize: =>
-    @model = @collection.longestPost()
+    @resetModel()
+
+  resetModel: =>
+    @model = @collection.longestPost() || new @collection.model()
 
   recalculatePost: =>
-    @model = @collection.longestPost()
+    @resetModel()
     @render()
+
+  onRender: =>
+    if !@model.get('content')
+      @$el.hide()
