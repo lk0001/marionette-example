@@ -10,3 +10,7 @@ class MarionetteExample.Models.Post extends Backbone.Model
 class MarionetteExample.Collections.Posts extends Backbone.Collection
   model: MarionetteExample.Models.Post
   url: '/api/posts'
+
+  longestPost: =>
+    @max (post) =>
+      post.get('content').length

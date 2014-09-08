@@ -2,6 +2,8 @@
 
 #posts
 
+#longest-post
+
 %a.nav-link{data-route: 'posts:new', href: '#'} New post
 
 %a.nav-link{data-route: 'posts:index', href: '#'} Posts

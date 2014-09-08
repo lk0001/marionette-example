@@ -3,7 +3,16 @@ class MarionetteExample.Views.PostsLayout extends Marionette.LayoutView
 
   regions:
     postsRegion: '#posts'
+    longestPostRegion: '#longest-post'
 
   onShow: =>
+    @displayPosts()
+    @displayLongestPost()
+
+  displayPosts: =>
     view = new MarionetteExample.Views.Posts(collection: @collection)
     @postsRegion.show(view)
+
+  displayLongestPost: =>
+    view = new MarionetteExample.Views.LongestPost(collection: @collection)
+    @longestPostRegion.show(view)

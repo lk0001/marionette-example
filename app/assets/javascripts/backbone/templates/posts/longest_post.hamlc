@@ -1,0 +1,5 @@
+%p Longest post:
+%p
+  %span= @content
+  by
+  %b= @author
