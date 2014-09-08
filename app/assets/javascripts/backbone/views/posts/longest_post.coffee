@@ -3,6 +3,7 @@ class MarionetteExample.Views.LongestPost extends Marionette.ItemView
 
   collectionEvents:
     'add':    'recalculatePost'
+    'change': 'recalculatePost'
     'remove': 'recalculatePost'
 
   initialize: =>

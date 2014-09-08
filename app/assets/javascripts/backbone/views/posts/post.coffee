@@ -1,10 +1,21 @@
-class MarionetteExample.Views.Post extends Marionette.ItemView
+class MarionetteExample.Views.Post extends Marionette.LayoutView
   template: JST['backbone/templates/posts/post']
 
   tagName: 'li'
 
   events:
+    'click .js-edit':    'displayEditForm'
     'click .js-destroy': 'destroyPost'
+
+  regions:
+    editForm: '.js-edit-form'
+
+  modelEvents:
+    'sync': 'render'
+
+  displayEditForm: =>
+    view = new MarionetteExample.Views.PostForm(model: @model)
+    @editForm.show(view)
 
   destroyPost: (e) =>
     e.preventDefault()

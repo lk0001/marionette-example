@@ -54,7 +54,6 @@ class @MarionetteExample.Application extends Backbone.Marionette.Application
 
   handlePostAdded: (post) =>
     @posts.add(post)
-    @trigger('route:posts:show', post.get('id'))
 
   handlePostDestroyed: =>
     @trigger('route:posts:index')

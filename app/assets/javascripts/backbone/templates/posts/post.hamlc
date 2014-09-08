@@ -1,9 +1,11 @@
-%span= @content
-|
-%span= @author
-|
-%a.nav-link{data-route: "posts:show/#{@id}", href: '#'} Show
-|
-%a.nav-link{data-route: "posts:edit/#{@id}", href: '#'} Edit
-|
-%a.js-destroy{href: '#'} Destroy
+.js-post
+  %span= @content
+  |
+  %span= @author
+  |
+  %a.nav-link{data-route: "posts:show/#{@id}", href: '#'} Show
+  |
+  %a.js-edit{href: '#'} Edit
+  |
+  %a.js-destroy{href: '#'} Destroy
+.js-edit-form
