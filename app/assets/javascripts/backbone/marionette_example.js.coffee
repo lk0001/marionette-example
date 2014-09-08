@@ -23,6 +23,7 @@ class @MarionetteExample.Application extends Backbone.Marionette.Application
         '(/)':              'start'
         'posts':            'posts'
         'posts_composite':  'postsComposite'
+        'posts_with_fetch': 'postsWithFetch'
         'post/:id':         'post'
         'posts/new':        'newPost'
         'posts/:id/edit':   'editPost'
@@ -46,6 +47,7 @@ class @MarionetteExample.Application extends Backbone.Marionette.Application
     @listenTo @, 'route:posts:edit', @Controller.editPost
     @listenTo @, 'route:posts:index', @Controller.posts
     @listenTo @, 'route:posts:index:composite', @Controller.postsComposite
+    @listenTo @, 'route:posts:index:with_fetch', @Controller.postsWithFetch
     @listenTo @, 'route:posts:show', @Controller.post
     @listenTo @, 'post:saved', @handlePostAdded
     @listenTo @, 'post:destroyed', @handlePostDestroyed

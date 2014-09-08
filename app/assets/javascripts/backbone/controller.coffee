@@ -23,6 +23,12 @@ class @MarionetteExample.Controller
     view = new MarionetteExample.Views.PostsComposite(collection: @app.posts)
     @navigate(view, '/posts_composite')
 
+  postsWithFetch: =>
+    backendPosts = new MarionetteExample.Collections.Posts
+    backendPosts.fetch()
+    view = new MarionetteExample.Views.PostsLayout(collection: backendPosts)
+    @navigate(view, '/posts_with_fetch')
+
   post: (id) =>
     id = _.flatten([id])[0]
     post = @app.posts.get(id)
