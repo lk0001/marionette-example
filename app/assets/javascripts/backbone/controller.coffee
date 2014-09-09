@@ -43,3 +43,32 @@ class @MarionetteExample.Controller
     post = @app.posts.get(id)
     view = new MarionetteExample.Views.PostForm(model: post)
     @navigate(view, "/posts/#{id}/edit")
+
+  compositeTree: =>
+    treeData = \
+      {nodeName: 'root', nodes: [
+        {nodeName: 'top 1', nodes: [
+          {nodeName: 'mid 1', nodes: [
+            {nodeName: 'bot 1'},
+            {nodeName: 'bot 2'},
+            {nodeName: 'bot 3'},
+          ]},
+          {nodeName: 'mid 2', nodes: [
+            {nodeName: 'bot 1'},
+            {nodeName: 'bot 2'},
+            {nodeName: 'bot 3'},
+          ]},
+          {nodeName: 'mid 3'},
+        ]},
+        {nodeName: 'top 2'},
+        {nodeName: 'top 3', nodes: [
+          {nodeName: 'mid 1', nodes: [
+            {nodeName: 'bot 1'},
+            {nodeName: 'bot 2'},
+            {nodeName: 'bot 3'},
+          ]},
+        ]},
+      ]}
+    model = new Backbone.Model(treeData)
+    view = new MarionetteExample.Views.CompositeTree(model: model)
+    @navigate(view, '/tree')

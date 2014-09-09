@@ -27,6 +27,7 @@ class @MarionetteExample.Application extends Backbone.Marionette.Application
         'post/:id':         'post'
         'posts/new':        'newPost'
         'posts/:id/edit':   'editPost'
+        'tree':             'compositeTree'
 
     @Controller = new MarionetteExample.Controller(@)
     @addInitializer =>
