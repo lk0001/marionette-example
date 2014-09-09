@@ -1,2 +1,2 @@
-= @nodeName
+%a.js-name{href: '#'}= @nodeName
 %ul
