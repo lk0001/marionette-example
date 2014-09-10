@@ -2,6 +2,10 @@
 
 %ul#posts
 
+%p
+  Last clicked post:
+  %span.js-last-clicked
+
 %a.nav-link{data-route: 'posts:new', href: '#'} New post
 
 %a.nav-link{data-route: 'posts:index', href: '#'} Posts

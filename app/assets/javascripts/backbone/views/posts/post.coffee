@@ -13,6 +13,9 @@ class MarionetteExample.Views.Post extends Marionette.LayoutView
   modelEvents:
     'sync': 'render'
 
+  triggers:
+    'click .js-post': 'post:clicked'
+
   displayEditForm: =>
     view = new MarionetteExample.Views.PostForm(model: @model)
     @editForm.show(view)
