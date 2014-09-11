@@ -1,0 +1,346 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Backbone ##
+- MV* architecture
+- minimalistic
+- models, collections, views, templates, routers
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Backbone.Events
+- listenTo/stopListening vs on/off:
+  `@listenTo` saves listeners in `@_listeningTo` variable, so you can always get a list of bound callbacks
+  `@stopListening()` clears all callbacks bound by this object using `@listenTo`
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Backbone.Model
+- has `urlRoot` attribute for REST actions (ex.
+    if `urlRoot = '/api/posts'`, then
+    create will go to 'POST /api/posts',
+    update to 'PUT /api/posts/:id',
+  etc)
+- has `url` attribute if you want to use static url (ex.
+    if `url = '/api/posts'`, then
+    create will go to 'POST /api/posts',
+    update to 'PUT /api/posts',
+  etc)
+- supports REST actions (show, create, update, destroy)
+- has `paramRoot` attribute if you want to encapsulate serialized json (ex.
+    without `paramRoot`:
+      {id: 1, author: "Jim", content: "something"}
+    with `paramRoot = "post"`:
+      {post: {id: 1, author: "Jim", content: "something"}}
+  )
+  NOTE: this attribute is added by `backbone-rails`, it is not present in vanilla backbone
+- can be validated if you implement `validate` method (or add some plugin)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Backbone.Collection
+- has `url` attribute
+- can be fetched (index)
+- has mixed in a lot of underscore methods (each, map, max, isEmpty, etc.)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Backbone.View
+- is bound to specific el in DOM
+- has Backbone.Events mixed in (`listenTo` method)
+- has `events` hash (binding DOM events)
+- can react to changes in model/collection (rerender on change, etc)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Marionette ##
+- aims to simplify construction of Backbone apps
+- includes common design and implementation patterns used in Backbone apps
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Marionette.View
+- extends Backbone.View
+- not meant to be used directly
+- doesn't have `render` method
+- conditional templates ('getTemplate' method)
+- supports `templateHelpers` function (passing additional variables to template)
+- has `ui` hash (binding UI elements)
+- has `triggers` hash (triggering events on DOM events)
+- has `modelEvents` & `collectionEvents`
+- has `onRender` method called always after render
+- has `onShow` method called only when the view has been rendered & displayed for the first time
+- has `triggerMethod` method for triggering events (ex.
+    @triggerMethod('some:long:event')
+    will trigger `'some:long:event'` and call `onSomeLongEvent` method (if it exists)
+  )
+- can use shared behaviors (`Marionette.Behavior`)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Marionette.ItemView
+- extends Marionette.View
+- basic view
+- implements `render` method
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Marionette.CollectionView
+- extends Marionette.View
+- used to display collections
+- has `emptyView` method (optional view displayed when view's collection is empty)
+- has `childViewOptions` method (passing arguments to child views)
+- has `childEvents` hash (capturing events from child views)
+- adding/removing models to/from collection don't cause whole view to rerender
+- you can override `attachHtml` method if you want to change how the child views are added to DOM (default is append)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Marionette.CompositeView
+- extends Marionette.CollectionView
+- used to display collections with simple wrapper
+- used to display tree views
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Marionette.LayoutView
+- extends Marionette.ItemView
+- used to display complex views with subviews
+- has region manager
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Marionette.Application
+- initializes and coordinates pieces of the app
+- has region manager
+- has event aggregator (`vent`; asynchronous information passing)
+- request/response (`reqres`; used to synchronously request some information from another component without a direct reference to it)
+- commands (`commands`; used to tell another component to do something without a direct reference to it)
+- can use modules (`Marionette.Module`)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Useful links ##
+underscore: http://underscorejs.org
+Backbone docs: http://backbonejs.org/
+Backbone annotated source: http://backbonejs.org/docs/backbone.html
+"Backbone fundamentals" book: http://addyosmani.github.io/backbone-fundamentals
+Marionette docs: http://marionettejs.com/docs/current
+Marionette annotated source: http://marionettejs.com/annotated-src/backbone.marionette
